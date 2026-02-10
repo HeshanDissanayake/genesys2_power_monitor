@@ -9,7 +9,7 @@ INA219_ADDRESSES = [0x40, 0x41, 0x44, 0x45, 0x48, 0x4c]
 bus = smbus2.SMBus(1)
 
 SAMPLE_INTERVAL = 0.001  # 1 ms
-LOG_INTERVAL = 0.1       # 0.1 second
+LOG_INTERVAL = 0.001       # 0.1 second
 
 def read_ina219(address):
     try:
