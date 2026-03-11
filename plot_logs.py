@@ -116,6 +116,26 @@ def plot_file(filepath):
             plt.close()
             print(f"  Saved: {output_filename}")
 
+        # ==========================================
+        # Generate Combined Plot (All in One)
+        # ==========================================
+        if data_cols:
+            plt.figure(figsize=(12, 8))
+            for col in data_cols:
+                plt.plot(df['Time_Sec'], df[col], label=col, linewidth=1.5)
+            
+            plt.title(f"{title_type}: All Components Combined")
+            plt.xlabel("Time (seconds)")
+            plt.ylabel(ylabel)
+            plt.grid(True, linestyle='--', alpha=0.7)
+            plt.legend(loc='best')
+            
+            # Save combined plot
+            output_filename = os.path.join(plot_dir, f"{file_root}_ALL_COMBINED.png")
+            plt.savefig(output_filename, dpi=150)
+            plt.close()
+            print(f"  Saved Combined: {output_filename}")
+
     except Exception as e:
         print(f"Failed to plot {filepath}: {e}")
 
